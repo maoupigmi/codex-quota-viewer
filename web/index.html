@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Codex · 配额查看器</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<div class="shell">
+  <!-- 标题与统计合并一行，把垂直空间留给账户列表。 -->
+  <header><h1>账户额度</h1><section class="summary" aria-label="账户概览"><span>账户 <b id="total">0</b></span><span>近期已更新 <b id="fresh">0</b></span><span>需关注 <b id="attention">0</b></span><span class="summary-note">本地时区</span></section></header>
+  <div class="toolbar"><div class="actions"><button id="login">＋ 登录账户</button><button id="import">导入 JSON</button><input type="file" id="files" accept=".json,application/json" multiple hidden><button id="refresh-all" class="primary">刷新全部</button></div><div class="filters"><input id="search" type="search" placeholder="搜索账户或备注" aria-label="搜索账户"><select id="sort" aria-label="排序"><option value="name">按账户名称</option><option value="remaining">通用剩余额度优先</option><option value="reset">最近额度恢复</option><option value="card">重置卡即将到期</option></select></div></div>
+  <div id="message" role="status" hidden></div>
+  <div id="login-status" hidden><span></span> <a id="login-link" target="_blank" rel="noreferrer">打开登录页面</a><button id="cancel-login">取消登录</button></div>
+  <section id="accounts" aria-label="账户列表"></section>
+  <section id="empty" class="empty"><div class="empty-mark">◷</div><h2>从第一个账户开始</h2><p>单独登录，可由本工具管理令牌刷新。<br>也可导入 Codex auth.json 或 CPA 的 Codex 凭据 JSON。</p><p class="muted">导入采用凭据副本，过期后需重新导入；原文件不会被修改。</p></section>
+  <footer><span>CODEX QUOTA VIEWER <b>0.1</b></span><span>手动查询 · 不发送模型请求 · 不消耗重置卡</span></footer>
+</div>
+<dialog id="edit-dialog"><h2>账户信息</h2><label>名称<input id="edit-label" maxlength="100"></label><label>备注<textarea id="edit-notes" maxlength="1000" rows="4" placeholder="例如：主力账户、订阅日期；请勿填写密码"></textarea></label><div class="dialog-actions"><button id="edit-cancel">取消</button><button id="edit-save" class="primary">保存</button></div></dialog>
+<dialog id="remove-dialog"><h2>移除本地账户</h2><p id="remove-label"></p><p class="muted">仅移除查看器里的记录，不注销账户，不修改原凭据文件。</p><div class="dialog-actions"><button id="remove-cancel">取消</button><button id="remove-confirm" class="danger">移除</button></div></dialog>
+</body></html>
