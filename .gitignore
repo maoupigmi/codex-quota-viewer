@@ -1,0 +1,31 @@
+# Python 与编辑器缓存
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+.idea/
+
+# 本机凭据、账户数据与调试产物不得发布
+*.dpapi
+auth.json
+auth-*.json
+*token*.json
+accounts*.json
+runtime*.json
+instance.lock
+*.tmp
+*.log
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.zip
+data/
+screenshots/
+
+# 上游参考源码仅保留本机；公开分发保留许可证和读取快照的哈希清单
+/reference/*
+!/reference/CLIProxyAPI__LICENSE
+!/reference/Cli-Proxy-API-Management-Center__LICENSE
+!/reference/SHA256SUMS.txt
